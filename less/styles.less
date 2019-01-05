@@ -1,0 +1,65 @@
+// VARIABLES
+@background:#f4f4f4;
+@font-family: sans-serif;
+@primary-color: #1088F2;
+@seconday-color: #333;
+@line-height: 1em + 1em;
+@white: #FFFFFF;
+
+// TEXT COLOR MIXINS
+.text-color(@a) when (lightness(@a) >= 50%) {
+  color:black;
+}
+
+.text-color(@a) when (lightness(@a) < 50%) {
+  color:white;
+}
+
+body {
+  font-family:@font-family;
+  background:@background;
+  line-height:@line-height;
+}
+
+h1, h3 {
+  .bordered;
+}
+
+.primary-text {
+  color:@primary-color;
+}
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  .border-radius(10px);
+}
+
+.primary-btn:extend(.btn) {
+  background:@primary-color;
+  .text-color(@primary-color);
+}
+
+ul#menu {
+  list-style-type: none;
+  background:lighten(@primary-color, 25%);
+  li {
+    padding: 10px 0;
+    a {
+      color:@primary-color;
+      text-decoration: none;
+      &:hover {
+        color:@seconday-color;
+      }
+    }
+  }
+}
+
+.border-radius(@radius) {
+  border-radius: @radius;
+}
+
+.bordered {
+  border-top: dotted 1px @seconday-color;
+  border-bottom: solid 2px @seconday-color;
+}
